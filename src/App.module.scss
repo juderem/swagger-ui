@@ -3,12 +3,25 @@
 @use "@material/data-table/data-table";
 @use "@material/top-app-bar/mdc-top-app-bar";
 @use "@material/button/styles";
+@use "@material/card";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
+
 
 @include checkbox.core-styles;
 // @include icon-button.core-styles;
 @include data-table.core-styles;
 @include data-table.theme-baseline;
+@include card.core-styles;
 
 // input {
 //     color: white!important
 // }
+
+.card {
+    height: 200px;
+    background-color: blueviolet;
+    width: 100px;
+    color: burlywood;
+}

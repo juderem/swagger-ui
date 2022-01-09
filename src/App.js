@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './App.module.scss';
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
@@ -50,6 +51,16 @@ function CheckboxTest() {
   )
 }
 
+
+// var x = new XMLHttpRequest();
+// x.open('GET', 'https://cors-anywhere.herokuapp.com/https://templatemanager.herokuapp.com/agentTypeMapping');
+// // I put "XMLHttpRequest" here, but you can use anything you want.
+// x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+// x.onload = function() {
+//     return (x.created);
+// };
+// x.send();
+
 function App() {
     const [results, setResult] = useState([]);
     const result =
@@ -72,21 +83,39 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <header className="App-header">
-          <CheckboxTest />
-          <ButtonStyled />
-          <TextField
-            variant="outlined"
-            color="primary"
-            type="date"
-            />
-          <h1>HELLO</h1>
-          <h2>Results</h2>
-          <Button startIcon={<SaveIcon /> }
-            size="large"
-            variant="contained"
-            color="secondary">Click Here</Button>
+          <h1 className='App-title'>Agent Manager</h1>
         </header>
       </div>
+      <main className='main'>
+        {/* <CheckboxTest /> */}
+        {/* <ButtonStyled /> */}
+            {/* <TextField
+              variant="outlined"
+              color="primary"
+              type="date"
+              /> */}
+            <div>
+              {results.map((result) => (
+                <ul className='card'>
+                  <li className='cardItem'>ID: {result.id}</li>
+                  <li className='cardItem'>OS: {result.os}</li>
+                  <li className='cardItem'>Agent Type: {result.agentType}</li>
+                  <li className='cardItem'>Created: {result.created}</li>
+                  <li className='cardItem'>Updated: {result.updated}</li>
+                  <li className='cardItem'>By: {result.by}</li>
+                </ul>
+              ))}
+            </div>
+            
+            <Button startIcon={<DeleteIcon /> }
+              size="large"
+              variant="contained"
+              color="secondary">Update</Button>
+            <Button startIcon={<DeleteIcon /> }
+              size="large"
+              variant="contained"
+              color="secondary">Delete</Button>
+      </main>
     </ThemeProvider>
   );
 }
