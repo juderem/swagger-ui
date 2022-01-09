@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './App.module.scss';
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save';
+import UpdateIcon from '@material-ui/icons/Update';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -79,6 +80,15 @@ function App() {
             return setResult(response)
         }))
     }, [])
+
+    function Update() {
+      window.location.reload(false);
+    }
+
+    function Delete() {
+      alert("Not working yet");
+    }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -103,18 +113,21 @@ function App() {
                   <li className='cardItem'>Created: {result.created}</li>
                   <li className='cardItem'>Updated: {result.updated}</li>
                   <li className='cardItem'>By: {result.by}</li>
+                  <Button startIcon={<DeleteIcon /> }
+                    size="large"
+                    variant="contained"
+                    color="secondary"
+                    onClick={Delete}>Delete</Button>
                 </ul>
               ))}
             </div>
             
-            <Button startIcon={<DeleteIcon /> }
+            <Button startIcon={<UpdateIcon /> }
               size="large"
               variant="contained"
-              color="secondary">Update</Button>
-            <Button startIcon={<DeleteIcon /> }
-              size="large"
-              variant="contained"
-              color="secondary">Delete</Button>
+              color="secondary"
+              onClick={Update}>Update</Button>
+            
       </main>
     </ThemeProvider>
   );
